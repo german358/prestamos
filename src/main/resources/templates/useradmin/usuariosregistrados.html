@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{master}">
+
+<head>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+            <div class="container-fluid">
+
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Usuarios Registrados</h1>
+
+
+                </div>
+           <div class="row">
+               <table class="table table-bordered dataTable">
+                   <thead>
+                   <tr>
+                       <th> nombres</th>
+                       <th> apellidos</th>
+                       <th> correo</th>
+                       <th> documento</th>
+                       <th>acciones</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                     <tr th:each="usr:${usuarios}">
+                         <td th:text="${usr.nombres}"></td>
+                         <td th:text="${usr.apellidos}"></td>
+                         <td th:text="${usr.correoElectronico}"></td>
+                         <td th:text="${usr.numeroDocumento}"></td>
+                         <td>
+                             <a class="btn btn-primary"th:href="@{/admin/edituser/{postId}(postId=${usr.Id})}">editar</a>
+                             <a class="btn btn-success"th:href="@{/admin/deleteuser/{postId}(postId=${usr.Id})}"> eliminar</a>
+
+                         </td>
+                     </tr>
+                   </tbody>
+               </table>
+           </div>
+            </div>
+                  </div>
+
+</div>
+</body>
+
+</html>
